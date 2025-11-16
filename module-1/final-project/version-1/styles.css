@@ -1,0 +1,161 @@
+:root {
+  --clr-white: #ffffff;
+
+  --clr-base-400: #5e5e5e;
+  --clr-base-500: #494949;
+
+  --clr-ui-300: #f8e2ff;
+  --clr-ui-400: #580d3a;
+  --clr-ux-300: #e2ffea;
+  --clr-ux-400: #115926;
+  --clr-dev-300: #e2fcff;
+  --clr-dev-400: #024f4f;
+
+  --ff-accent: "Podkova", serif;
+  --ff-base: "Open Sans", sans-serif;
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  --border-radius: 0.75rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #d6d6d6;
+  font-family: var(--ff-base);
+}
+
+.candidates {
+  background: #fff;
+  display: grid;
+  gap: 1em;
+  place-items: center;
+  max-width: 70em;
+  min-width: 22.5em;
+  margin: 0 auto;
+  padding: 2em;
+
+  @media (width > 968px) {
+    grid-template-columns: repeat(2, 1fr);
+    place-items: initial;
+  }
+}
+
+.candidate {
+  display: grid;
+  grid-template-areas:
+    "img social"
+    "name name"
+    "roles roles"
+    "bio bio"
+    "button button";
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  align-items: center;
+  padding: 0.5em;
+
+  @media (width > 500px) {
+    grid-template-columns: min-content minmax(15em, 20em);
+    grid-template-areas:
+      "img name"
+      "img roles"
+      "img bio"
+      "social button";
+    column-gap: 0.5em;
+  }
+}
+
+.candidate .name {
+  grid-area: name;
+
+  font-family: var(--ff-accent);
+  margin: 0;
+  font-size: 2rem;
+  color: var(--clr-base-500);
+}
+
+.candidate img {
+  grid-area: img;
+  border-radius: var(--border-radius);
+}
+
+.candidate .roles {
+  grid-area: roles;
+
+  margin: 0;
+  display: flex;
+  gap: 0.5em;
+}
+
+.candidate .role {
+  background: var(--bg, var(--clr-base-500));
+  color: var(--fg, var(--clr-white));
+  padding: 0.25em 0.75em;
+  font-size: 0.85rem;
+  font-weight: var(--fw-700);
+  border-radius: var(--border-radius);
+}
+
+.role-dev {
+  --bg: var(--clr-dev-300);
+  --fg: var(--clr-dev-400);
+}
+.role-ui {
+  --bg: var(--clr-ui-300);
+  --fg: var(--clr-ui-400);
+}
+.role-ux {
+  --bg: var(--clr-ux-300);
+  --fg: var(--clr-ux-400);
+}
+
+.candidate .bio {
+  grid-area: bio;
+
+  color: var(--clr-base-400);
+}
+
+.candidate .social {
+  grid-area: social;
+
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1.5em;
+  margin-right: 2em;
+
+  @media (width > 500px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+  }
+}
+
+.candidate .button {
+  grid-area: button;
+
+  background: var(--clr-ui-400);
+  color: var(--clr-white);
+  width: min-content;
+  text-wrap: nowrap;
+  text-decoration: none;
+  font-weight: var(--fw-700);
+  padding: 0.5em 2em;
+  border-radius: var(--border-radius);
+  text-transform: uppercase;
+
+  @media (width > 500px) {
+    margin-left: auto;
+  }
+}
