@@ -1,0 +1,202 @@
+:root {
+  --clr-primary-400: #00a1ab;
+  --clr-primary-500: #3741a0;
+
+  --clr-accent-400: #00cdac;
+  --clr-accent-500: #114243;
+
+  --clr-neutral-100: #fff;
+  --clr-neutral-200: #fafafa;
+  --clr-neutral-300: #e5e3e8;
+  --clr-neutral-400: #4e4e4e;
+
+  --fs-sm: 0.75rem;
+  --fs-base: 1rem;
+  --fs-lg: 2rem;
+
+  --fw-400: 400;
+  --fw-700: 700;
+}
+
+/* CSS RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+h1,
+h2,
+p,
+span,
+a {
+  margin: 0;
+  padding: 0;
+}
+
+/* PAGE STYLES */
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-neutral-400);
+  min-inline-size: 20em;
+  overflow-x: hidden;
+}
+
+.pricing {
+  text-align: center;
+  padding: 2em 1em 4em 1em;
+}
+
+.pricing > h2 {
+  font-size: calc(var(--fs-lg) * 1.25);
+}
+
+.pricing > p {
+  font-size: calc(var(--fs-base) * 1.25);
+}
+
+.pricing > .button {
+  margin-block-start: 1em;
+}
+
+.plans {
+  display: grid;
+  grid-template-areas:
+    "super"
+    "basic"
+    "enterprise";
+  gap: 1em;
+  max-inline-size: 50em;
+  margin-inline: auto;
+  margin-block: 3em;
+  grid-template-columns: minmax(18.75em, 21.875em);
+  justify-content: center;
+
+  @media (width > 850px) {
+    grid-template-areas: "basic super enterprise";
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    padding-inline: 0;
+  }
+}
+
+.plans > .plan:nth-child(1) {
+  grid-area: basic;
+}
+.plans > .plan:nth-child(2) {
+  grid-area: super;
+}
+.plans > .plan:nth-child(3) {
+  grid-area: enterprise;
+}
+
+.plan {
+  border-radius: 0.75rem;
+  padding: 2.5em 3em;
+  line-height: 1.6;
+}
+
+.plans > .plan:nth-child(1) {
+  @media (width > 850px) {
+    border-radius: 0.75rem 0 0 0.75rem;
+  }
+}
+.plans > .plan:nth-child(3) {
+  @media (width > 850px) {
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+}
+
+.plan--lg {
+  padding-block: 4em;
+}
+
+.plan .title {
+  text-transform: uppercase;
+  margin-block-end: 1em;
+}
+
+.plan .price {
+  line-height: 1;
+  font-weight: var(--fw-700);
+  font-size: calc(var(--fs-lg) * 1.25);
+  color: var(--pop);
+}
+
+.plan .price span {
+  display: block;
+  font-weight: var(--fw-400);
+  font-size: calc(var(--fs-lg) * 0.85);
+}
+
+.plan .description {
+  margin-block: 1.75em;
+}
+
+/* GENERIC STYLES */
+
+.accent {
+  color: var(--clr-primary-400);
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.75em 0.75em;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--bg, var(--clr-primary-400));
+  color: var(--fg, var(--clr-neutral-100));
+  font-weight: var(--fw-700);
+}
+
+/* THEMES */
+
+.bg-light {
+  --fg: var(--clr-neutral-100);
+  --bg: var(--clr-neutral-400);
+  --pop: var(--clr-primary-400);
+
+  background: linear-gradient(
+    120deg,
+    var(--clr-neutral-200),
+    var(--clr-neutral-300)
+  );
+  color: var(--clr-neutral-400);
+}
+
+.bg-accent {
+  --fg: var(--clr-neutral-400);
+  --bg: var(--clr-neutral-100);
+  --pop: var(--clr-neutral-100);
+
+  background: linear-gradient(
+    120deg,
+    var(--clr-primary-400),
+    var(--clr-primary-500)
+  );
+  color: var(--clr-neutral-100);
+}
+
+.bg-dark {
+  --fg: var(--clr-neutral-100);
+  --bg: var(--clr-primary-400);
+  --pop: var(--clr-neutral-100);
+
+  background: linear-gradient(120deg, var(--clr-neutral-400), #000);
+  color: var(--clr-neutral-100);
+}
