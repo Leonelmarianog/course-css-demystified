@@ -50,19 +50,23 @@ body {
   font-family: "Roboto", sans-serif;
   color: var(--clr-neutral-400);
   min-inline-size: 20em;
-  overflow-x: hidden;
+  text-align: center;
+  line-height: 1.6;
 }
 
-.pricing {
-  text-align: center;
+.pricing,
+.team {
   padding: 2em 1em 4em 1em;
 }
 
-.pricing > h2 {
+.pricing > h2,
+.team > h2 {
   font-size: calc(var(--fs-lg) * 1.25);
+  line-height: 1;
 }
 
-.pricing > p {
+.pricing > p,
+.team > p {
   font-size: calc(var(--fs-base) * 1.25);
 }
 
@@ -105,7 +109,6 @@ body {
 .plan {
   border-radius: 0.75rem;
   padding: 2.5em 3em;
-  line-height: 1.6;
 }
 
 .plans > .plan:nth-child(1) {
@@ -143,6 +146,102 @@ body {
 
 .plan .description {
   margin-block: 1.75em;
+}
+
+.team {
+  background: var(--clr-neutral-200);
+}
+
+.members {
+  display: grid;
+  gap: 1em;
+  max-inline-size: 70em;
+  margin-inline: auto;
+  margin-block: 3em;
+
+  @media (width > 850px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.member {
+  border-radius: 0.75em;
+  padding: 0.5em;
+  display: grid;
+  grid-template-areas:
+    "name"
+    "role"
+    "img"
+    "bio";
+  justify-items: center;
+  text-align: center;
+
+  @media (width > 500px) {
+    grid-template-areas:
+      "name img"
+      "role img"
+      "bio img";
+    grid-template-rows: min-content min-content 1fr;
+    column-gap: 2em;
+    justify-items: end;
+    text-align: end;
+  }
+}
+
+.member .name {
+  grid-area: name;
+}
+.member .role {
+  grid-area: role;
+}
+.member img {
+  grid-area: img;
+}
+.member .bio {
+  grid-area: bio;
+}
+
+.member--mirrored {
+  @media (width > 500px) {
+    grid-template-areas:
+      "img name"
+      "img role"
+      "img bio";
+    justify-items: start;
+    text-align: start;
+  }
+}
+
+.member .name {
+  color: var(--pop);
+  line-height: 1;
+
+  @media (width > 500px) {
+    margin-block-start: 1em;
+  }
+}
+
+.member .role {
+  font-size: calc(var(--fs-sm) * 1.15);
+  font-weight: var(--fw-700);
+
+  @media (width > 500px) {
+    margin-block-end: 1em;
+  }
+}
+
+.member > img {
+  border-radius: 0.75em;
+  margin-block: 1em;
+
+  @media (width > 500px) {
+    margin-block: 0;
+  }
+}
+
+.member .bio {
+  line-height: 1.6;
+  font-size: calc(var(--fs-sm) * 1.25);
 }
 
 /* GENERIC STYLES */
